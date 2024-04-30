@@ -1,0 +1,85 @@
+﻿@model IEnumerable<CatalogoAutomotivo.MER.Fabricante>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@* <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RazaoSocial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slogan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFundacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fundador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sede)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebSite)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RazaoSocial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slogan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFundacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fundador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sede)
+            </td>
+            <td>
+                <a href="https://@item.WebSite">
+                    @Html.DisplayFor(modelItem => item.WebSite)
+                </a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ *@
+
+<div id="Fabricantes">
+    <h2>Fabricantes</h2>
+
+    <p>
+        <a asp-action="Create">Cadastrar</a>
+    </p>
+
+    <div class="row row-cols-2 justify-content-between">
+        @foreach (var item in Model)
+        {
+            <div class="card text-bg-white col-sm-6 col-md-3">
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img src="@item.Img" class="card-img" alt="...">
+                    @* <div class="card-img-overlay">
+                <h5 class="card-title">@item.RazaoSocial</h5>
+                </div> *@
+                </a>
+            </div>
+        }
+    </div>
+</div>
