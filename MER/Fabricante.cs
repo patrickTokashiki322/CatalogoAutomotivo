@@ -24,7 +24,7 @@ namespace CatalogoAutomotivo.MER
         [MaxLength(100, ErrorMessage = "Quantidade máxima de caracteres é 100")]
         public string WebSite { get; set; }
 
-        public string Img { get; set; }
+        public string? Img { get; set; }
         public ICollection<Carro> Carros { get; set; }
     }
 }

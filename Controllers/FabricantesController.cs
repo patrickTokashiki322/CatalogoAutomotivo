@@ -54,19 +54,28 @@ namespace CatalogoAutomotivo.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RazaoSocial,Slogan,DataFundacao,Fundador,Sede,WebSite")] FabricanteViewModel fabricante)
+        public async Task<IActionResult> Create([Bind("Id,RazaoSocial,Slogan,DataFundacao,Fundador,Sede,WebSite")] FabricanteViewModel fabricante, IFormFile file)
         {
-            var fabricanteMer = new Fabricante();
-
-            fabricanteMer.RazaoSocial = fabricante.RazaoSocial;
-            fabricanteMer.Slogan = fabricante.Slogan;
-            fabricanteMer.DataFundacao = fabricante.DataFundacao;
-            fabricanteMer.Fundador = fabricante.Fundador;
-            fabricanteMer.Sede = fabricante.Sede;
-            fabricanteMer.WebSite = fabricante.WebSite;
-
             if (ModelState.IsValid)
             {
+                var fabricanteMer = new Fabricante();
+
+                fabricanteMer.RazaoSocial = fabricante.RazaoSocial;
+                fabricanteMer.Slogan = fabricante.Slogan;
+                fabricanteMer.DataFundacao = fabricante.DataFundacao;
+                fabricanteMer.Fundador = fabricante.Fundador;
+                fabricanteMer.Sede = fabricante.Sede;
+                fabricanteMer.WebSite = fabricante.WebSite;
+
+                if (file.Length > 0)
+                {
+                    var fabricanteLogoPath = @"Content/Uploads/Fabricantes/";
+
+                    new FileManager(_fileProvider).CreateFile(fabricanteLogoPath, file);
+
+                    fabricanteMer.Img = fabricanteLogoPath + file.FileName;
+                }
+
                 _context.Fabricante.Add(fabricanteMer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
