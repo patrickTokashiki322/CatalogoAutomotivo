@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CatalogoAutomotivo.Context;
 using CatalogoAutomotivo.MER;
 using CatalogoAutomotivo.ViewModel;
-using CatalogoAutomotivo.Repository;
 using CatalogoAutomotivo.Repository.Interfaces;
-using System.Drawing;
 using Microsoft.Extensions.FileProviders;
+using CatalogoAutomotivo.Common;
 
 namespace CatalogoAutomotivo.Controllers
 {
@@ -28,13 +22,13 @@ namespace CatalogoAutomotivo.Controllers
             _fileProvider = fileProvider;
         }
 
-        // GET: Fabricantes
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View(await _fabricanteRepository.ListarFabricante());
         }
 
-        // GET: Fabricantes/Details/5
+        [HttpGet]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -52,15 +46,12 @@ namespace CatalogoAutomotivo.Controllers
             return View(fabricante);
         }
 
-        // GET: Fabricantes/Create
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Fabricantes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,RazaoSocial,Slogan,DataFundacao,Fundador,Sede,WebSite")] FabricanteViewModel fabricante)
@@ -73,7 +64,6 @@ namespace CatalogoAutomotivo.Controllers
             fabricanteMer.Fundador = fabricante.Fundador;
             fabricanteMer.Sede = fabricante.Sede;
             fabricanteMer.WebSite = fabricante.WebSite;
-            //fabricanteMer.Img = fabricante.Img;
 
             if (ModelState.IsValid)
             {
@@ -84,7 +74,7 @@ namespace CatalogoAutomotivo.Controllers
             return View(fabricante);
         }
 
-        // GET: Fabricantes/Edit/5
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -100,9 +90,6 @@ namespace CatalogoAutomotivo.Controllers
             return View(fabricante);
         }
 
-        // POST: Fabricantes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,RazaoSocial,Slogan,DataFundacao,Fundador,Sede,WebSite")] FabricanteViewModel fabricante, IFormFile file)
@@ -121,21 +108,10 @@ namespace CatalogoAutomotivo.Controllers
                 {
                     var fabricanteLogoPath = @"Content/Uploads/Fabricantes/";
 
-                    var folderInfo = _fileProvider.GetFileInfo(Path.Combine("wwwroot", fabricanteLogoPath));
-                    string filePath = Path.Combine(folderInfo.PhysicalPath, file.FileName);
-                    
-                    using (var stream = System.IO.File.Create(filePath))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-
-                    // string filePath = _fileProvider.GetFileInfo(@"Content\Uploads\Fabricantes" + file.FileName).PhysicalPath;
+                    new FileManager(_fileProvider).CreateFile(fabricanteLogoPath, file);
 
                     fabricanteMer.Img = fabricanteLogoPath + file.FileName;
                 }
-
-                //byte[] bytes = System.IO.File.ReadAllBytes();
-                //string imageToBase64 = Convert.ToBase64String(bytes);
 
                 fabricanteMer.RazaoSocial = fabricante.RazaoSocial;
                 fabricanteMer.Slogan = fabricante.Slogan;
@@ -147,14 +123,13 @@ namespace CatalogoAutomotivo.Controllers
                 _context.Update(fabricanteMer);
                 await _context.SaveChangesAsync();
 
-
                 return RedirectToAction(nameof(Index));
             }
 
             return View(fabricante);
         }
 
-        // GET: Fabricantes/Delete/5
+        [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -172,7 +147,6 @@ namespace CatalogoAutomotivo.Controllers
             return View(fabricante);
         }
 
-        // POST: Fabricantes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
