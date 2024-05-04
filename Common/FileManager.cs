@@ -16,10 +16,17 @@ namespace CatalogoAutomotivo.Common
             var folderInfo = _fileProvider.GetFileInfo(Path.Combine("wwwroot", fabricanteLogoPath));
             string filePath = Path.Combine(folderInfo.PhysicalPath, file.FileName);
 
-            using (var stream = System.IO.File.Create(filePath))
+            if (File.Exists(filePath))
             {
-                file.CopyToAsync(stream);
+                File.Delete(filePath);
             }
+
+            var stream = System.IO.File.Create(filePath);
+
+            file.CopyToAsync(stream);
+
+            stream.Dispose();
+            stream.Close();
         }
     }
 }

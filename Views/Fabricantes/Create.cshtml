@@ -1,63 +1,69 @@
 ﻿@model CatalogoAutomotivo.MER.Fabricante
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastrar fabricante";
 }
 
-<h1>Create</h1>
+<h1>Cadastrar</h1>
 
-<h4>Fabricante</h4>
+<h4>Novo Fabricante</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="RazaoSocial" class="control-label"></label>
+                <label asp-for="RazaoSocial" class="control-label">Razão Social</label>
                 <input asp-for="RazaoSocial" class="form-control" />
                 <span asp-validation-for="RazaoSocial" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Slogan" class="control-label"></label>
+                <label asp-for="Slogan" class="control-label">Slogan</label>
                 <input asp-for="Slogan" class="form-control" />
                 <span asp-validation-for="Slogan" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataFundacao" class="control-label"></label>
+                <label asp-for="DataFundacao" class="control-label">Data de fundação</label>
                 <input asp-for="DataFundacao" class="form-control" />
                 <span asp-validation-for="DataFundacao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fundador" class="control-label"></label>
+                <label asp-for="Fundador" class="control-label">Fundador</label>
                 <input asp-for="Fundador" class="form-control" />
                 <span asp-validation-for="Fundador" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sede" class="control-label"></label>
+                <label asp-for="Sede" class="control-label">Sede</label>
                 <input asp-for="Sede" class="form-control" />
                 <span asp-validation-for="Sede" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WebSite" class="control-label"></label>
+                <label asp-for="WebSite" class="control-label">WebSite</label>
                 <input asp-for="WebSite" class="form-control" />
                 <span asp-validation-for="WebSite" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Img" class="control-label"></label>
+                <label asp-for="Img" class="control-label">Logo</label>
                 <input asp-for="Img" class="form-control" type="file" name="file" />
                 <span asp-validation-for="Img" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                
+                <a asp-action="Index">
+                    <button type="button" class="btn btn-secondary">Voltar</button>
+                </a>
             </div>
+
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

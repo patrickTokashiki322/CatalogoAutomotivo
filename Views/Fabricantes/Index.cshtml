@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CatalogoAutomotivo.MER.Fabricante>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Fabricantes";
 }
 
 @* <table class="table">
@@ -65,9 +65,11 @@
 <div id="Fabricantes">
     <h2>Fabricantes</h2>
 
-    <p>
-        <a asp-action="Create">Cadastrar</a>
-    </p>
+    <a asp-action="Create">
+        <button type="button" class="btn btn-primary">Cadastrar</button>
+    </a>
+    <br />
+    <hr />
 
     <div class="row row-cols-2 justify-content-between">
         @foreach (var item in Model)

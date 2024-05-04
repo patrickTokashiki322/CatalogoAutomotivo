@@ -1,55 +1,65 @@
 ﻿@model CatalogoAutomotivo.MER.Fabricante
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes do fabricante";
 }
 
-<h1>Details</h1>
+<h1>Detalhes</h1>
 
 <div>
-    <h4>Fabricante</h4>
+    <h4>Fabricante: @Model.RazaoSocial</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.RazaoSocial)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.RazaoSocial)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Slogan)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Slogan)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DataFundacao)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DataFundacao)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Fundador)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Fundador)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Sede)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Sede)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.WebSite)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WebSite)
+        <dd class="col-sm-10">
+            <a href="https://@Model.WebSite" target="_blank">@Model.WebSite</a>
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Img)
+            <img src="~/@Model.Img" width="200" style="background-color:white; border-radius:10px"/>
+        </dt>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-    <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">
+        <button type="button" class="btn btn-primary">Editar</button>
+    </a>
+    <a asp-action="Index">
+        <button type="button" class="btn btn-secondary">Voltar</button>
+    </a>
+    <a asp-action="Delete" asp-route-id="@Model?.Id">
+        <button type="button" class="btn btn-danger">Deletar</button>
+    </a>
 </div>
