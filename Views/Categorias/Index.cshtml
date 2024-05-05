@@ -19,9 +19,9 @@
             <div class="card text-bg-white col-sm-6 col-md-3">
                 <a asp-action="Details" asp-route-id="@item.Id">
                     <img src="@item.Img" class="card-img" alt="...">
-                    @* <div class="card-img-overlay">
-                <h5 class="card-title">@item.RazaoSocial</h5>
-                </div> *@
+                    <div class="card-img-overlay">
+                        <h5 class="card-title" style="color: black">@item.NomeCategoria</h5>
+                    </div>
                 </a>
             </div>
         }
