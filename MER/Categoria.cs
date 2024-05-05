@@ -10,6 +10,7 @@ namespace CatalogoAutomotivo.MER
 
         [MaxLength(20, ErrorMessage = "Quantidade máxima de caracteres é 20")]
         public string NomeCategoria { get; set; }
+        public string? Img { get; set; }
         public ICollection<Carro> Carros { get; set; }
     }
 }

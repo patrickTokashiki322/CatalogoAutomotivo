@@ -11,22 +11,27 @@ namespace CatalogoAutomotivo.Common
             _fileProvider = fileProvider;
         }
 
-        public void CreateFile(string fabricanteLogoPath, IFormFile file)
+        public void CreateFile(string path, IFormFile file)
         {
-            var folderInfo = _fileProvider.GetFileInfo(Path.Combine("wwwroot", fabricanteLogoPath));
+            var folderInfo = _fileProvider.GetFileInfo(Path.Combine("wwwroot", path));
             string filePath = Path.Combine(folderInfo.PhysicalPath, file.FileName);
+
+            string realPath = "wwwroot/" + path;
+
+            if (!Directory.Exists(realPath))
+            {
+                Directory.CreateDirectory(realPath);
+            }
 
             if (File.Exists(filePath))
             {
                 File.Delete(filePath);
             }
 
-            var stream = System.IO.File.Create(filePath);
-
-            file.CopyToAsync(stream);
-
-            stream.Dispose();
-            stream.Close();
+            using (var stream = System.IO.File.Create(filePath))
+            {
+                file.CopyToAsync(stream);
+            }
         }
     }
 }

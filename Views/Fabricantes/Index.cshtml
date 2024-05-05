@@ -4,64 +4,6 @@
     ViewData["Title"] = "Fabricantes";
 }
 
-@* <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RazaoSocial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slogan)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataFundacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fundador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sede)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WebSite)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RazaoSocial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Slogan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataFundacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fundador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sede)
-            </td>
-            <td>
-                <a href="https://@item.WebSite">
-                    @Html.DisplayFor(modelItem => item.WebSite)
-                </a>
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
- *@
-
 <div id="Fabricantes">
     <h2>Fabricantes</h2>
 

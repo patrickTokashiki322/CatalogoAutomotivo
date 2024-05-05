@@ -27,16 +27,6 @@ namespace CatalogoAutomotivo.Repository
             _appDbContext.SaveChanges();
         }
 
-        public void DeletarFabricante(Fabricante fabricante)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void EditarFabricante(Fabricante fabricante)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<ICollection<Fabricante>> ListarFabricante()
         {
             return await _appDbContext.Fabricante.ToListAsync();

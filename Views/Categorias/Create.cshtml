@@ -1,0 +1,44 @@
+﻿@model CatalogoAutomotivo.MER.Categoria
+
+@{
+    ViewData["Title"] = "Cadastrar categoria";
+}
+
+<h1>Cadastrar</h1>
+
+<h4>Nova Categoria</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomeCategoria" class="control-label">Nome</label>
+                <input asp-for="NomeCategoria" class="form-control" />
+                <span asp-validation-for="NomeCategoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Img" class="control-label">Logo</label>
+                <input asp-for="Img" class="form-control" type="file" name="file" />
+                <span asp-validation-for="Img" class="text-danger"></span>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+
+                <a asp-action="Index">
+                    <button type="button" class="btn btn-secondary">Voltar</button>
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

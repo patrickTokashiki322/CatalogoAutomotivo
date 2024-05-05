@@ -1,0 +1,13 @@
+﻿@model CatalogoAutomotivo.MER.Categoria
+
+@{
+    ViewData["Title"] = "Categoria " + @Model.NomeCategoria;
+}
+
+<div>
+    <ul>
+        <li>
+            @Html.DisplayNameFor(model => model.NomeCategoria)
+        </li>
+    </ul>
+</div>

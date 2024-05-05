@@ -1,35 +1,29 @@
-﻿@{
+﻿@model IEnumerable<CatalogoAutomotivo.MER.Categoria>
+
+@{
     ViewData["Title"] = "Categorias";
 }
 
 <div id="Categorias">
     <h2>Categorias</h2>
 
-    <div class="d-flex justify-content-between">
+    <a asp-action="Create">
+        <button type="button" class="btn btn-primary">Cadastrar</button>
+    </a>
+    <br />
+    <hr />
 
-        <div class="card text-bg-white col-md-2">
-            <img src="~/img/Categorias/Hatch.webp" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title">Hatch</h5>
+    <div class="row row-cols-2 justify-content-between">
+        @foreach (var item in Model)
+        {
+            <div class="card text-bg-white col-sm-6 col-md-3">
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img src="@item.Img" class="card-img" alt="...">
+                    @* <div class="card-img-overlay">
+                <h5 class="card-title">@item.RazaoSocial</h5>
+                </div> *@
+                </a>
             </div>
-        </div>
-        <div class="card text-bg-white col-md-2">
-            <img src="~/img/Categorias/Sedan.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title">Sedan</h5>
-            </div>
-        </div>
-        <div class="card text-bg-white col-md-2">
-            <img src="~/img/Categorias/SUV.webp" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title">SUV</h5>
-            </div>
-        </div>
-        <div class="card text-bg-dawhiterk col-md-2">
-            <img src="~/img/Categorias/van.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title">Van</h5>
-            </div>
-        </div>
+        }
     </div>
 </div>

@@ -8,7 +8,5 @@ namespace CatalogoAutomotivo.Repository.Interfaces
         Fabricante? ObterFabricantePorId(int id);
         void CriarFabricante(Fabricante fabricante);
         Task<ICollection<Fabricante>> ListarFabricante();
-        void EditarFabricante(Fabricante fabricante);
-        void DeletarFabricante(Fabricante fabricante);
     }
 }
