@@ -22,10 +22,10 @@ namespace CatalogoAutomotivo
 
             services.AddControllers();
 
-            services.AddDbContext<AppDbContext>(
-                options => options.UseSqlServer("Data Source=DESKTOP-NRIVBVQ\\SQLEXPRESS;Initial Catalog=CatalogoAutomotivo;Integrated Security=True;TrustServerCertificate=True"));
             //services.AddDbContext<AppDbContext>(
-            //    options => options.UseSqlServer("Data Source=DESKTOP-E15VM80\\SQLEXPRESS;Initial Catalog=CatalogoAutomotivo;Integrated Security=True;TrustServerCertificate=True"));
+            //    options => options.UseSqlServer("Data Source=DESKTOP-NRIVBVQ\\SQLEXPRESS;Initial Catalog=CatalogoAutomotivo;Integrated Security=True;TrustServerCertificate=True"));
+            services.AddDbContext<AppDbContext>(
+                options => options.UseSqlServer("Data Source=DESKTOP-E15VM80\\SQLEXPRESS;Initial Catalog=CatalogoAutomotivo;Integrated Security=True;TrustServerCertificate=True"));
 
             services.AddScoped<IFabricante, FabricanteRepository>();
             services.AddScoped<ICategoria, CategoriaRepository>();
