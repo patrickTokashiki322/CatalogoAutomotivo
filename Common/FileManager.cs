@@ -32,6 +32,8 @@ namespace CatalogoAutomotivo.Common
             using (var stream = System.IO.File.Create(filePath))
             {
                 file.CopyToAsync(stream);
+
+                stream.Dispose();
             }
         }
 
