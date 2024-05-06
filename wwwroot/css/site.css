@@ -27,7 +27,7 @@ body header nav div a.navbar-brand, body header nav div a.nav-link {
     font-weight: bold;
 }
 
-#Categorias .card {
+#Categorias .card, #Fabricantes .card {
     width: 200px;
     height: 200px;
     margin: 10px
