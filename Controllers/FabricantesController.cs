@@ -112,10 +112,16 @@ namespace CatalogoAutomotivo.Controllers
 
             if (ModelState.IsValid)
             {
+                var fabricanteLogoPath = @"Content/Uploads/Fabricantes/";
+                string fullFilePath = Path.Combine(fabricanteLogoPath, file.FileName);
+
+                if (fabricanteMer.Img != fullFilePath)
+                {
+                    new FileManager(_fileProvider).DeleteFile(fabricanteMer.Img);
+                }
 
                 if (file.Length > 0)
                 {
-                    var fabricanteLogoPath = @"Content/Uploads/Fabricantes/";
 
                     new FileManager(_fileProvider).CreateFile(fabricanteLogoPath, file);
 
@@ -163,7 +169,15 @@ namespace CatalogoAutomotivo.Controllers
             var fabricante = await _context.Fabricante.FindAsync(id);
             if (fabricante != null)
             {
-                _context.Fabricante.Remove(fabricante);
+                if (fabricante != null)
+                {
+                    if (fabricante.Img != null)
+                    {
+                        new FileManager(_fileProvider).DeleteFile(fabricante.Img);
+                    }
+
+                    _context.Fabricante.Remove(fabricante);
+                }
             }
 
             await _context.SaveChangesAsync();

@@ -1,0 +1,39 @@
+﻿@model CatalogoAutomotivo.MER.Categoria
+
+@{
+    ViewData["Title"] = "Deletar categoria";
+}
+
+<div class="row">
+    <h1>Categoria: @Model.NomeCategoria</h1>
+    <h3>Tem certeza de que deseja deletar a categoria @Model.NomeCategoria?</h3>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-md-2">
+            @Html.DisplayNameFor(model => model.NomeCategoria)
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.NomeCategoria)
+        </dd>
+        <dt class="col-md-2">
+            @Html.DisplayNameFor(model => model.Img)
+            <img src="~/@Model.Img" width="200" style="background-color: white; border-radius: 10px"/>
+        </dt>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <div class="btn-toolbar" role="toolbar" aria-label="Barra com botões">
+            <div class="btn-group me-2" role="group" aria-label="Botão Deletar">
+                    <input type="submit" value="Deletar" class="btn btn-danger" />
+            </div>
+            <div class="btn-group" role="group" aria-label="Botão Voltar">
+                <a asp-action="Index" asp-controller="Categorias">
+                    <button type="button" class="btn btn-secondary">Voltar</button>
+                </a>
+            </div>
+        </div>
+    </form>
+
+</div>

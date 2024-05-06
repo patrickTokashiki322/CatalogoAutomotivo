@@ -4,59 +4,61 @@
     ViewData["Title"] = "Deletar fabricante";
 }
 
-<h1>Deletar</h1>
+<div class="row">
+    <h1>Deletar</h1>
 
-<h3>Tem certeza de que deseja deletar o fabricante @Model.RazaoSocial?</h3>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.RazaoSocial)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.RazaoSocial)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Slogan)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Slogan)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DataFundacao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DataFundacao)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Fundador)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Fundador)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sede)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sede)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.WebSite)
-        </dt>
-        <dd class="col-sm-10">
-            <a href="https://@Model.WebSite" target="_blank">@Model.WebSite</a>
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Img)
-            <img src="~/@Model.Img" width="200" style="background-color:white; border-radius:10px" />
-        </dt>
-    </dl>
+    <h3>Tem certeza de que deseja deletar o fabricante @Model.RazaoSocial?</h3>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.RazaoSocial)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.RazaoSocial)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Slogan)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Slogan)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DataFundacao)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DataFundacao)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Fundador)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Fundador)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Sede)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Sede)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.WebSite)
+            </dt>
+            <dd class="col-sm-10">
+                <a href="https://@Model.WebSite" target="_blank">@Model.WebSite</a>
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Img)
+                <img src="~/@Model.Img" width="200" style="background-color:white; border-radius:10px" />
+            </dt>
+        </dl>
 
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Deletar" class="btn btn-danger" />
-        <a asp-action="Index">
-            <button type="button" class="btn btn-secondary">Voltar</button>
-        </a>
-    </form>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Deletar" class="btn btn-danger" />
+            <a asp-action="Index">
+                <button type="button" class="btn btn-secondary">Voltar</button>
+            </a>
+        </form>
+    </div>
 </div>

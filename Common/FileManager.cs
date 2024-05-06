@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace CatalogoAutomotivo.Common
 {
@@ -31,6 +32,14 @@ namespace CatalogoAutomotivo.Common
             using (var stream = System.IO.File.Create(filePath))
             {
                 file.CopyToAsync(stream);
+            }
+        }
+
+        public void DeleteFile(string path)
+        {
+            if (File.Exists("wwwroot/" + path))
+            {
+                File.Delete("wwwroot/" + path);
             }
         }
     }

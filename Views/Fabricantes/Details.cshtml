@@ -53,15 +53,20 @@
     </dl>
 </div>
 
-@* TODO: Agrupar botões como na páginad e detalhes de Categorias *@
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">
-        <button type="button" class="btn btn-primary">Editar</button>
-    </a>
-    <a asp-action="Index">
-        <button type="button" class="btn btn-secondary">Voltar</button>
-    </a>
-    <a asp-action="Delete" asp-route-id="@Model?.Id">
-        <button type="button" class="btn btn-danger">Deletar</button>
-    </a>
+<div class="btn-toolbar" role="toolbar" aria-label="Barra com botões">
+    <div class="btn-group me-2" role="group" aria-label="Botão Editar">
+        <a asp-action="Edit" asp-controller="Fabricantes" asp-route-id="@Model.Id">
+            <button type="button" class="btn btn-primary btn">Editar</button>
+        </a>
+    </div>
+    <div class="btn-group me-2" role="group" aria-label="Botão Voltar">
+        <a asp-action="Index" asp-controller="Fabricantes">
+            <button type="button" class="btn btn-secondary">Voltar</button>
+        </a>
+    </div>
+    <div class="btn-group" role="group" aria-label="Botão Deletar">
+        <a asp-action="Delete" asp-controller="Fabricantes" asp-route-id="@Model.Id">
+            <button type="button" class="btn btn-danger">Deletar</button>
+        </a>
+    </div>
 </div>

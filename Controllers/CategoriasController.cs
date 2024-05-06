@@ -31,14 +31,14 @@ namespace CatalogoAutomotivo.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
             var categoria = await _context.Categoria.FirstOrDefaultAsync(c => c.Id == id);
 
-            if(categoria == null)
+            if (categoria == null)
             {
                 return NotFound();
             }
@@ -77,6 +77,104 @@ namespace CatalogoAutomotivo.Controllers
             }
 
             return View(categoriaViewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var categoria = await _context.Categoria.FindAsync(id);
+
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoria);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(CategoriaViewModel categoriaViewModel, IFormFile file)
+        {
+            if (ModelState.IsValid)
+            {
+                var categoriaMer = _categoriaRepository.ObterCategoriaPorId(categoriaViewModel.Id);
+
+                if (categoriaMer == null)
+                {
+                    return NotFound();
+                }
+
+                categoriaMer.NomeCategoria = categoriaViewModel.NomeCategoria;
+
+                var categoriaLogoPath = @"Content/Uploads/Categoria/";
+                string fullFilePath = Path.Combine(categoriaLogoPath, file.FileName);
+
+
+                if (categoriaMer.Img != fullFilePath)
+                {
+                    new FileManager(_fileProvider).DeleteFile(categoriaMer.Img);
+                }
+
+                if (file.Length > 0)
+                {
+
+                    new FileManager(_fileProvider).CreateFile(categoriaLogoPath, file);
+
+                    categoriaMer.Img = categoriaLogoPath + file.FileName;
+                }
+
+                _context.Categoria.Update(categoriaMer);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+
+            return View(categoriaViewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var categoria = await _context.Categoria.FindAsync(id);
+
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoria);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var categoria = await _context.Categoria.FindAsync(id);
+
+            if (categoria != null)
+            {
+                if (categoria.Img != null)
+                {
+                    new FileManager(_fileProvider).DeleteFile(categoria.Img);
+                }
+
+                _context.Categoria.Remove(categoria);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
