@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace CatalogoAutomotivo.ViewModel
 {
@@ -7,22 +8,31 @@ namespace CatalogoAutomotivo.ViewModel
         [Required]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório")]
+        [DisplayName("Razão Social")]
         public string RazaoSocial { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório")]
+        [DisplayName("Slogan")]
         public string Slogan { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório")]
+        [DisplayName("Data de fundação")]
         public string DataFundacao { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório")]
+        [DisplayName("Fundador")]
         public string Fundador { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório")]
+        [DisplayName("Sede")]
         public string Sede { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório")]
+        [DisplayName("WebSite")]
         public string WebSite { get; set; }
+
+        [DisplayName("Logo")]
+        public string? Img { get; set; }
     }
 }

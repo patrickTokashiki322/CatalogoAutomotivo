@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace CatalogoAutomotivo.ViewModel
 {
@@ -6,7 +7,11 @@ namespace CatalogoAutomotivo.ViewModel
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório")]
+        [DisplayName("Nome")]
         public string NomeCategoria { get; set; }
+
+        [DisplayName("Logo")]
+        public string? Img { get; set; }
     }
 }

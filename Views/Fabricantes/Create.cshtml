@@ -1,4 +1,4 @@
-﻿@model CatalogoAutomotivo.MER.Fabricante
+﻿@model CatalogoAutomotivo.ViewModel.FabricanteViewModel
 
 @{
     ViewData["Title"] = "Cadastrar fabricante";
@@ -13,38 +13,38 @@
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="RazaoSocial" class="control-label"><span style="color: red">*</span> Razão Social</label>
+                <label asp-for="RazaoSocial" class="control-label"><span style="color: red">*</span> @Html.DisplayNameFor(model => model.RazaoSocial)</label>
                 <input asp-for="RazaoSocial" class="form-control" />
                 <span asp-validation-for="RazaoSocial" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Slogan" class="control-label"><span style="color: red">*</span> Slogan</label>
+                <label asp-for="Slogan" class="control-label"><span style="color: red">*</span> @Html.DisplayNameFor(model => model.Slogan)</label>
                 <input asp-for="Slogan" class="form-control" />
                 <span asp-validation-for="Slogan" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataFundacao" class="control-label"><span style="color: red">*</span> Data de fundação</label>
+                <label asp-for="DataFundacao" class="control-label"><span style="color: red">*</span> @Html.DisplayNameFor(model => model.DataFundacao)</label>
                 <input asp-for="DataFundacao" class="form-control" />
                 <span asp-validation-for="DataFundacao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fundador" class="control-label"><span style="color: red">*</span> Fundador</label>
+                <label asp-for="Fundador" class="control-label"><span style="color: red">*</span> @Html.DisplayNameFor(model => model.Fundador)</label>
                 <input asp-for="Fundador" class="form-control" />
                 <span asp-validation-for="Fundador" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sede" class="control-label"><span style="color: red">*</span> Sede</label>
+                <label asp-for="Sede" class="control-label"><span style="color: red">*</span> @Html.DisplayNameFor(model => model.Sede)</label>
                 <input asp-for="Sede" class="form-control" />
                 <span asp-validation-for="Sede" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WebSite" class="control-label"><span style="color: red">*</span> WebSite</label>
+                <label asp-for="WebSite" class="control-label"><span style="color: red">*</span> @Html.DisplayNameFor(model => model.WebSite)</label>
                 <input asp-for="WebSite" class="form-control" />
                 <span asp-validation-for="WebSite" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Img" class="control-label"><span style="color: red">*</span> Logo</label>
-                <input asp-for="Img" class="form-control" type="file" name="file" required/>
+                <label asp-for="Img" class="control-label"><span style="color: red">*</span> @Html.DisplayNameFor(model => model.Img)</label>
+                <input asp-for="Img" class="form-control" type="file" name="file" />
                 <span asp-validation-for="Img" class="text-danger"></span>
             </div>
 
